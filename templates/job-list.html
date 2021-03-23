@@ -1,0 +1,240 @@
+{{ define "content" }}
+
+<!-- Cookie banner -->
+<div v-if="showCookieBanner" class="w-screen fixed top-0 bg-gray-100 flex items-center justify-center z-10">
+  <section class="w-full p-5 lg:px-24 absolute top-0 bg-gray-600">
+    <div class="md:flex items-center -mx-3">
+      <div class="md:flex-1 px-3 mb-5 md:mb-0">
+        <p class="text-center md:text-left text-white text-xs leading-tight md:pr-12">
+          We and selected partners and related companies, use cookies and similar technologies as specified in our Cookies Policy. You agree to consent to the use of these technologies by clicking Accept, or by continuing to browse this website. You can learn more about how we use cookies and set cookie preferences in Settings.
+        </p>
+      </div>
+      <div class="px-0 md:px-3 text-center">
+        <button @click="toggleCookieModal()" class="py-2 px-8 bg-gray-800 hover:bg-gray-900
+        text-white rounded font-bold text-sm shadow-xl mr-3">
+          Cookie settings
+        </button>
+        <button @click="showCookieBanner = false" class="py-2 px-8 bg-green-400
+        hover:bg-green-500 text-white rounded font-bold text-sm shadow-xl">
+          Accept cookies
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div v-if="showCookieDetails" class="h-auto w-10/12 md:w-1/2 overflow-hidden rounded-md p-0 bg-gray-300 relative">
+    <div class="flex flex-col w-full h-auto relative">
+      <div class="flex w-full h-auto items-center px-5 py-3">
+        <div class="w-10/12 h-auto text-lg font-bold">
+          Cookie settings
+        </div>
+        <div class="flex w-2/12 h-auto justify-end">
+          <button @click="close()" class="cursor-pointer focus:outline-none text-gray-400 hover:text-gray-800">
+            <i class="mdi mdi-close-circle-outline text-2xl"></i>
+          </button>
+        </div>
+      </div>
+      <div class="flex w-full items-center bg-gray-100 border-b border-gray-200 px-5 py-3 text-sm">
+        <div class="flex-1">
+          <p>Strictly necessary cookies</p>
+        </div>
+        <div class="w-10 text-right">
+          <i class="mdi mdi-check-circle text-2xl text-green-400 leading-none"></i>
+        </div>
+      </div>
+      <div class="flex w-full items-center bg-gray-100 border-b border-gray-200 px-5 py-3 text-sm">
+        <div class="flex-1">
+          <p>Cookies that remember your settings</p>
+        </div>
+        <div class="w-10 text-right">
+          <i class="mdi mdi-check-circle text-2xl text-green-400 leading-none"></i>
+        </div>
+      </div>
+      <div class="flex w-full items-center bg-gray-100 border-b border-gray-200 px-5 py-3 text-sm">
+        <div class="flex-1">
+          <p>Cookies that measure website use</p>
+        </div>
+        <div class="w-10 text-right">
+          <i class="mdi mdi-check-circle text-2xl text-green-400 leading-none"></i>
+        </div>
+      </div>
+      <div class="flex w-full items-center bg-gray-100 border-b border-gray-200 px-5 py-3 text-sm">
+        <div class="flex-1">
+          <p>Cookies that help with our communications and marketing</p>
+        </div>
+        <div class="w-10 text-right">
+          <i class="mdi mdi-check-circle text-2xl text-green-400 leading-none"></i>
+        </div>
+      </div>
+      <div class="flex w-full px-5 py-3 justify-end">
+        <button @click="close()" class="py-2 px-8 bg-gray-800 hover:bg-gray-900 text-white rounded font-bold text-sm shadow-xl">Save settings</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Hero section -->
+<div class="min-w-full justify-center p-8">
+  <div class="relative w-full max-w-full lg:max-w-6xl xl:max-w-screen-2xl mx-auto">
+
+    <div class="absolute inset-0 -mr-3.5 bg-gradient-to-r from-red-100 to-purple-500
+      shadow-lg transform -skew-y-6 sm:skew-y-0 sm:rotate-3 sm:rounded-3xl"></div>
+
+    <div class="relative bg-white shadow-sm sm:rounded-2xl">
+      <div class=" py-6">
+        <div class="mt-20 text-center">
+          <div class="text-5xl font-semibold text-gray-900">Find your dream job in Tech</div>
+          <div class="mt-6 text-2xl font-light text-true-gray-500">
+            Get jobs alert straight to your inbox
+          </div>
+
+          <div class="py-12 flex flex-wrap justify-center content-center">
+            <div class=" mt-3 flex flex-wrap">
+
+              <input type="text" class="p-2 rounded-l-lg border border-gray-300
+                placeholder-gray-500 md:w-80 text-gray-900 focus:outline-none
+                focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="john@mail.com"/>
+
+              <button class="p-2 bg-indigo-400 rounded-r-lg text-white
+               hover:bg-indigo-300" type="button">Subscribe</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- /hero section -->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Search chips section -->
+<div class="flex flex-wrap justify-center space-x-4 mt-16">
+  <button class="search-chip" type="button">
+    React
+  </button>
+
+  <button class="search-chip" type="button">
+    VueJs
+  </button>
+
+  <button class="search-chip" type="button">
+    Angular
+  </button>
+
+  <button class="search-chip" type="button">
+    Nodejs
+  </button>
+
+  <button class="search-chip" type="button">
+    JavaScript
+  </button>
+</div>
+
+<!-- Accordian section -->
+<div class="w-full max-w-full lg:max-w-6xl xl:max-w-screen-6xl mx-auto py-6">
+  <div @click="accordianActive = !accordianActive" class="py-3">
+    <div class="border border-b-0 bg-gray-100 px-10 py-6 rounded-t-lg flex items-start"
+      id="headingOne">
+      <!-- Avatar -->
+      <div class="flex-none overflown-hidden rounded-full w-14 h-14 border mr-4">
+        <img src="" alt="">
+      </div>
+      <!-- Card body -->
+      <div class="flex-grow">
+        <h4 class="text-purple-900 font-bold flex-none">Senior Frontend Developer</h4>
+        <h6>Ecme Inc</h6>
+      </div>
+      <div>Remote</div>
+    </div>
+
+    <div v-show="accordianActive" class="border px-10 py-6 rounded-b-lg">
+      <div id="md">
+        <h1>My heading</h1>
+        <h2>This is H2</h2>
+        <h3>This is H3</h3>
+        <h4>This is H4</h4>
+        <h5>This is H5</h5>
+        <h6>This is H6</h6>
+
+        <ul>
+          <li>This is an unordered list</li>
+        </ul>
+
+        <ol>
+          <li>This is an order list</li>
+          <li>This is an order list</li>
+        </ol>
+
+        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson
+          ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+          quinoa nesciunt laborum eiusmod. <b>Brunch 3 wolf moon tempor,</b> sunt aliqua put a bird on
+          it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+          butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic
+          synth nesciunt you probably haven't heard of <i>them accusamus labore sustainable</i> VHS.</p>
+
+      </div>
+
+      <div class="flex justify-center">
+        <button class="mt-6 py-4 px-4 border border-transparent text-sm
+          font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none
+          focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Apply
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pagination -->
+<div class="mt-4">
+  <div class="flex rounded-md bg-white py-4 px-4 overflow-x-auto">
+    <div class="flex rounded mr-4">
+      <a href="#" class="py-2 px-3 leading-tight bg-white border border-gray-200
+        text-blue-700 border-r-0 ml-0 rounded-l hover:bg-indigo-500
+        hover:text-white"><span>Previous</a>
+      <a href="#" class="py-2 px-3 leading-tight bg-white border
+        order-gray-200 text-blue-700 border-r-0 hover:bg-indigo-500
+        hover:text-white"><span>1</span></a>
+      <a href="#" class="py-2 px-3 leading-tight bg-white border
+        border-gray-200 text-blue-700 border-r-0 hover:bg-indigo-500
+        hover:text-white"><span>2</span></a>
+      <a href="#" class="py-2 px-3 leading-tight bg-white border
+        border-gray-200 text-blue-700 border-r-0 hover:bg-indigo-500
+        hover:text-white"><span>3</span></a>
+      <a href="#" class="py-2 px-3 leading-tight bg-white border
+        border-gray-200 text-blue-700 rounded-r hover:bg-indigo-500
+        hover:text-white"><span>Next</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer banner -->
+<div v-if="isFooterBannerOpen" class="w-full fixed bottom-0">
+
+  <div class="flex items-center justify-center w-full p-2 bg-gradient-to-r from-red-100
+  to-purple-500 shadow text-gray-700 font-semibold space-x-4">
+
+    <div class="flex-col md:flex-row md:flex space-x-4 items-center text-center">
+      <p class="text-lg mb-3 md:mb-0">Get a weekly email with all new remote jobs</p>
+      <form>
+        <div class="flex flex-col rounded-lg overflow-hidden sm:flex-row">
+          <input class="py-2 px-6 bg-gray-200 text-gray-800 border-gray-300 border-2 outline-none
+            placeholder-gray-500 focus:bg-gray-100" type="text" name="email" placeholder="Enter your email" />
+          <button class="py-2 px-4 bg-indigo-700 text-gray-100 font-semibold
+            hover:bg-indigo-600">Subscribe</button>
+        </div>
+      </form>
+    </div>
+    <button @click="isFooterBannerOpen = false">
+      <i class="mdi mdi-close text-2xl text-white"></i>
+    </button>
+  </div>
+</div>
+
+
+{{ end }}

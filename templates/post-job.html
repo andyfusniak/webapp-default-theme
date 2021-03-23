@@ -1,0 +1,98 @@
+{{ define "content" }}
+<div class="jobPostCard">
+  <div>
+    <h2 class="cardTitle">Post a Job</h2>
+  </div>
+  <form class="mt-8 space-y-6" action="#" method="POST">
+    <input type="hidden" name="remember" value="true">
+    <div>
+      <div class="py-2">
+        <label for="job-title" class="sr-only">Job Title</label>
+        <input id="job-title" name="job-title" type="text" required
+          class="formInput" placeholder="Job Title">
+      </div>
+      <div class="py-2">
+        <label for="job-local" class="sr-only">Job Location</label>
+        <input id="job-local" name="job-local" type="text" required
+          class="formInput" placeholder="Job Location">
+      </div>
+
+      <div class="py-2">
+        <label for="company-name" class="sr-only">Company Name</label>
+        <input id="company-name" name="company-name" type="text" required
+          class="formInput" placeholder="Company Name">
+      </div>
+
+      <div class="py-2">
+        <label for="jd" class="sr-only">Job Description</label>
+        <textarea id="jd" name="jd" required class="formInput"
+        placeholder="Job Description"></textarea>
+      </div>
+
+      <div class="my-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+        <div class="space-y-1 text-center">
+          <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <div class="flex text-sm text-gray-500">
+            <label for="image-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+              <span>Upload a company photo</span>
+
+              <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only"
+                @change="loadimage">
+            </label>
+          </div>
+          <p class="text-xs text-gray-500">
+            PNG, JPG up to 10MB
+          </p>
+        </div>
+      </div>
+
+      <img v-if="url" :src="url" class="mx-auto object-scale-down mb-4" />
+      <div v-else class="text-center py-4">
+        <p  class="text-gray-600">No photo selected</p>
+      </div>
+
+      <div class="py-2">
+        <label for="company-website" class="sr-only">Company Website</label>
+        <input id="company-website" name="company-website" type="text" required
+          class="formInput" placeholder="Company Website">
+      </div>
+
+      <div class="py-2">
+        <label for="apply-link" class="sr-only">How to apply (Email or URL)</label>
+        <input id="apply-link" name="apply-link" type="text" required
+          class="formInput" placeholder="How to apply (Email or URL)">
+      </div>
+
+      <div class="py-2">
+        <label for="email" class="sr-only">Email</label>
+        <input id="email" name="email" type="email" required
+          class="formInput" placeholder="Your email">
+      </div>
+
+      <div class="md:space-x-8">
+        <label class="inline-flex items-center mt-3">
+          <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600">
+          <span class="ml-2 text-gray-700">Highlight job listing for $49</span>
+        </label>
+
+        <label class="inline-flex items-center mt-3">
+          <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600">
+          <span class="ml-2 text-gray-700">Automatically renew my job post for $79</span>
+        </label>
+      </div>
+    </div>
+
+
+    <div class="px-4 py-3 text-center">
+      <button type="submit" class="inline-flex justify-center py-2 px-4 border
+        border-transparent shadow-sm text-sm font-medium rounded-md text-white
+        bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2
+        focus:ring-offset-2 focus:ring-indigo-500">
+        Post a job - $99
+      </button>
+    </div>
+  </form>
+</div>
+{{ end }}

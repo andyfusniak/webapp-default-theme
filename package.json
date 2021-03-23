@@ -1,0 +1,23 @@
+{
+  "name": "tailwind-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tw:build": "tailwindcss build ./css/tailwind.css -o ./public/css/tailwind.css",
+    "tw:prod": "NODE_ENV=production postcss build ./css/tailwind.css -o ./public/css/tailwind.css",
+    "tw:watch": "onchange 'tailwind.config.js' 'css/**/*.css' 'templates/**/*.html' -- npm run tw:build"
+  },
+  "keywords": [],
+  "author": "Namwa Sawasdiworn",
+  "license": "MIT",
+  "dependencies": {
+    "@tailwindcss/forms": "^0.2.1",
+    "autoprefixer": "^10.2.1",
+    "cssnano": "^4.1.10",
+    "onchange": "^7.1.0",
+    "postcss": "^8.2.4",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.2"
+  }
+}

@@ -1,0 +1,210 @@
+{{ define "layout" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/css/tailwind.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.min.css" integrity="sha512-vIgFb4o1CL8iMGoIF7cYiEVFrel13k/BkTGvs0hGfVnlbV6XjAA0M0oEHdWqGdAVRTDID3vIZPOHmKdrMAUChA==" crossorigin="anonymous" />
+
+  <title>Job Board</title>
+</head>
+
+<body class="flex flex-col min-h-screen">
+  <div id="app">
+    <!-- nav -->
+    <div class="relative bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex justify-between items-center border-b-2 border-gray-100 py-6
+          md:justify-start md:space-x-10">
+
+          <div class="flex justify-start lg:w-0 lg:flex-1">
+            <a href="#">
+              <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="">
+            </a>
+          </div>
+
+          <div class="-mr-2 -my-2 md:hidden">
+            <button @click="isOpen = true" type="button" class="inline-flex bg-white rounded-md p-2
+              items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100
+              focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <span class="sr-only">Open menu</span>
+
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+
+          <nav class="hidden md:flex space-x-10">
+            <a href="/jobs" class="text-base font-medium text-gray-500 hover:text-gray-900">
+              Jobs
+            </a>
+            <a href="/post-job" class="text-base font-medium text-gray-500 hover:text-gray-900">
+              Post Job
+            </a>
+            <a href="/dashboard" class="text-base font-medium text-gray-500 hover:text-gray-900">
+              Dashboard
+            </a>
+          </nav>
+
+          <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+            <a href="/signin" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+              Sign in
+            </a>
+            <a href="/signup" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+              Sign up
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-10"
+        :class="isOpen ? 'block' : 'hidden'"
+      >
+        <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+
+          <div class="pt-5 pb-6 px-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
+              </div>
+              <div class="-mr-2">
+                <button @click="isOpen = false" type="button" class="inline-flex bg-white rounded-md
+                  p-2 items-center justify-center text-gray-400 hover:text-gray-500
+                hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset
+                  focus:ring-indigo-500">
+                  <span class="sr-only">Close menu</span>
+                  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="py-6 px-5 space-y-6">
+            <div class="grid grid-cols-1 gap-y-4 gap-x-8">
+              <a href="/jobs" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                Jobs
+              </a>
+              <a href="/post-job" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                Post Job
+              </a>
+              <a href="/dashboard" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                Dashboard
+              </a>
+            </div>
+
+            <div>
+              <a href="#" class="w-full flex items-center justify-center px-4 py-2 border border-transparent
+                rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                Sign up
+              </a>
+              <p class="mt-6 text-center text-base font-medium text-gray-500">
+                Existing customer?
+                <a href="#" class="text-indigo-600 hover:text-indigo-500">
+                  Sign in
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- content -->
+    <div class="wrapper">
+      {{ template "content" . }}
+    </div>
+
+    <!-- footer -->
+
+    <div class="bg-gray-100">
+      <div class="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-center">
+        <div class="p-5 w-48 ">
+          <div class="text-xs uppercase text-gray-500 font-medium">Home</div>
+          <a class="my-3 block" href="/#">About Us
+            <span class="text-teal-600 text-xs p-1"></span>
+          </a>
+        </div>
+        <div class="p-5 w-48">
+          <div class="text-xs uppercase text-gray-500 font-medium">Resources</div>
+          <a class="my-3 block" href="/#">Documentation
+            <span class="text-teal-600 text-xs p-1"></span>
+          </a>
+        </div>
+        <div class="p-5 w-48">
+          <div class="text-xs uppercase text-gray-500 font-medium">Product</div>
+          <a class="my-3 block" href="/#">Our Products
+            <span class="text-teal-600 text-xs p-1"></span>
+          </a>
+          <a class="my-3 block" href="/#">Great Deals
+            <span class="text-teal-600 text-xs p-1">New</span>
+          </a>
+          <a class="my-3 block" href="/#">Analytics
+            <span class="text-teal-600 text-xs p-1"></span>
+          </a>
+        </div>
+        <div class="p-5 w-48 ">
+          <div class="text-xs uppercase text-gray-500 font-medium">Contact us</div>
+          <a class="my-3 block" href="/#">XXX XXXX, Floor 4 San Francisco, CA
+            <span class="text-teal-600 text-xs p-1"></span>
+          </a><a class="my-3 block" href="/#">contact@company.com
+            <span class="text-teal-600 text-xs p-1"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-gray-100 pt-2 ">
+      <div class="flex pb-5 px-3 m-auto pt-5 border-t text-gray-800 text-sm flex-col
+        md:flex-row max-w-6xl">
+        <div class="mt-2">© Copyright 2020. All Rights Reserved.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+  <script>
+    let simplemde = new SimpleMDE({ element: document.getElementById("jd") });
+  </script>
+
+  <script>
+    const App = {
+      data() {
+        return {
+          isOpen: false,
+          isFooterBannerOpen: true,
+          showCookieBanner: true,
+          showCookieDetails: false,
+          accordianActive: false,
+          url: null
+        }
+      },
+      methods: {
+        toggleCookieModal() {
+          this.showCookieDetails = !this.showCookieDetails;
+        },
+        close() {
+          this.showCookieDetails = false;
+        },
+        loadimage(event) {
+          const logo = event.target.files[0];
+          this.url = URL.createObjectURL(logo);
+        }
+      },
+    };
+
+    Vue.createApp(App).mount('#app');
+
+  </script>
+</body>
+</html>
+{{ end }}
