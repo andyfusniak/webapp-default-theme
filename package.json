@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tw:build": "tailwindcss build ./css/tailwind.css -o ./public/css/tailwind.css",
-    "tw:prod": "NODE_ENV=production postcss build ./css/tailwind.css -o ./public/css/tailwind.css",
+    "setup": "mkdir -p public/js && cp vendor/vue.runtime.global.prod-3.0.7.js public/js",
+    "clean": "rimraf public",
+    "tw:build": "npm run setup && tailwindcss build ./css/tailwind.css -o ./public/css/tailwind.css",
+    "tw:prod": "npm run setup && NODE_ENV=production postcss build ./css/tailwind.css -o ./public/css/tailwind.css",
     "tw:watch": "onchange 'tailwind.config.js' 'css/**/*.css' 'templates/**/*.html' -- npm run tw:build"
   },
   "keywords": [],
@@ -19,5 +21,8 @@
     "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.2"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
   }
 }
