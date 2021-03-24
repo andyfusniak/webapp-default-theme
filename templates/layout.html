@@ -1,15 +1,20 @@
-{{ define "layout" }}
+{{ define "title" }}Job Board{{ end }}
+{{ define "plinks" }}{{ end }}
+{{ define "layout" -}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="static/css/tailwind.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.min.css" integrity="sha512-vIgFb4o1CL8iMGoIF7cYiEVFrel13k/BkTGvs0hGfVnlbV6XjAA0M0oEHdWqGdAVRTDID3vIZPOHmKdrMAUChA==" crossorigin="anonymous" />
-
-  <title>Job Board</title>
+  <title>{{ template "title" . }}</title>
+  {{ if .Site.DevMode -}}
+  <script src="static/js/vue.global.prod-3.0.7.js"></script>
+  {{- else -}}
+  <script src="https://unpkg.com/vue@next"></script>
+  {{- end }}
+  {{ template "plinks" . }}
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -27,7 +32,7 @@
           </div>
 
           <div class="-mr-2 -my-2 md:hidden">
-            <button @click="isOpen = true" type="button" class="inline-flex bg-white rounded-md p-2
+            <button type="button" class="inline-flex bg-white rounded-md p-2
               items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100
               focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
               <span class="sr-only">Open menu</span>
@@ -44,9 +49,6 @@
             </a>
             <a href="/post-job" class="text-base font-medium text-gray-500 hover:text-gray-900">
               Post Job
-            </a>
-            <a href="/dashboard" class="text-base font-medium text-gray-500 hover:text-gray-900">
-              Dashboard
             </a>
           </nav>
 
@@ -72,7 +74,7 @@
                 <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
               </div>
               <div class="-mr-2">
-                <button @click="isOpen = false" type="button" class="inline-flex bg-white rounded-md
+                <button type="button" class="inline-flex bg-white rounded-md
                   p-2 items-center justify-center text-gray-400 hover:text-gray-500
                 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset
                   focus:ring-indigo-500">
@@ -117,9 +119,7 @@
     </div>
 
     <!-- content -->
-    <div class="wrapper">
-      {{ template "content" . }}
-    </div>
+    {{ template "content" . }}
 
     <!-- footer -->
 
@@ -163,48 +163,11 @@
     <div class="bg-gray-100 pt-2 ">
       <div class="flex pb-5 px-3 m-auto pt-5 border-t text-gray-800 text-sm flex-col
         md:flex-row max-w-6xl">
-        <div class="mt-2">© Copyright 2020. All Rights Reserved.</div>
+        <div class="mt-2">&copy; Copyright 2020. All Rights Reserved.</div>
       </div>
     </div>
-
   </div>
 
-  <script src="https://unpkg.com/vue@next"></script>
-  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-
-  <script>
-    let simplemde = new SimpleMDE({ element: document.getElementById("jd") });
-  </script>
-
-  <script>
-    const App = {
-      data() {
-        return {
-          isOpen: false,
-          isFooterBannerOpen: true,
-          showCookieBanner: true,
-          showCookieDetails: false,
-          accordianActive: false,
-          url: null
-        }
-      },
-      methods: {
-        toggleCookieModal() {
-          this.showCookieDetails = !this.showCookieDetails;
-        },
-        close() {
-          this.showCookieDetails = false;
-        },
-        loadimage(event) {
-          const logo = event.target.files[0];
-          this.url = URL.createObjectURL(logo);
-        }
-      },
-    };
-
-    Vue.createApp(App).mount('#app');
-
-  </script>
 </body>
 </html>
 {{ end }}

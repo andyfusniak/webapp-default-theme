@@ -1,9 +1,18 @@
+{{ define "plinks" -}}
+{{ if .Site.DevMode -}}
+<link rel="stylesheet" href="static/js/simplemde.min.css">
+{{- else -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+{{- end -}}
+{{- end -}}
 {{ define "content" }}
+<div class="wrapper">
+
 <div class="jobPostCard">
   <div>
     <h2 class="cardTitle">Post a Job</h2>
   </div>
-  <form class="mt-8 space-y-6" action="#" method="POST">
+  <form class="mt-8 space-y-6" action="#" method="post">
     <input type="hidden" name="remember" value="true">
     <div>
       <div class="py-2">
@@ -94,5 +103,12 @@
       </button>
     </div>
   </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script>
+  const simplemde = new SimpleMDE({ element: document.getElementById("jd") });
+</script>
+
 </div>
 {{ end }}

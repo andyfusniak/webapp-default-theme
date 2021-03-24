@@ -1,7 +1,8 @@
+{{ define "title" }}Job Listings{{ end}}
 {{ define "content" }}
-
 <!-- Cookie banner -->
-<div v-if="showCookieBanner" class="w-screen fixed top-0 bg-gray-100 flex items-center justify-center z-10">
+<div id="thing" class="wrapper">
+  <div v-if="showCookieBanner" class="w-screen fixed top-0 bg-gray-100 flex items-center justify-center z-10">
   <section class="w-full p-5 lg:px-24 absolute top-0 bg-gray-600">
     <div class="md:flex items-center -mx-3">
       <div class="md:flex-1 px-3 mb-5 md:mb-0">
@@ -10,7 +11,7 @@
         </p>
       </div>
       <div class="px-0 md:px-3 text-center">
-        <button @click="toggleCookieModal()" class="py-2 px-8 bg-gray-800 hover:bg-gray-900
+        <button @click="showCookieDetails = !showCookieDetails" class="py-2 px-8 bg-gray-800 hover:bg-gray-900
         text-white rounded font-bold text-sm shadow-xl mr-3">
           Cookie settings
         </button>
@@ -67,13 +68,23 @@
         </div>
       </div>
       <div class="flex w-full px-5 py-3 justify-end">
-        <button @click="close()" class="py-2 px-8 bg-gray-800 hover:bg-gray-900 text-white rounded font-bold text-sm shadow-xl">Save settings</button>
+        <button @click="showCookieDetails = f" class="py-2 px-8 bg-gray-800 hover:bg-gray-900 text-white rounded font-bold text-sm shadow-xl">Save settings</button>
       </div>
     </div>
   </div>
 </div>
 
-
+<script>
+  const Apple = {
+    data() {
+      return {
+        showCookieBanner: true,
+        showCookieDetails: false
+      };
+    }
+  };
+  Vue.createApp(Apple).mount('#thing');
+</script>
 
 <!-- Hero section -->
 <div class="min-w-full justify-center p-8">

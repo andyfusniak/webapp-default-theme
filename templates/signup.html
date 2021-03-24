@@ -1,6 +1,10 @@
+{{ define "title" }}SIGNUP{{ end }}
 {{ define "content" }}
+<div class="wrapper">
+
 <div class="card">
-  <h2 class="cardTitle">Sign up</h2>
+  <h2 class="cardTitle">Sign up A1</h2>
+  <h1>Hello, {{if .Site.DevMode }} ITS TRUE {{else}} NOPE {{end}}!</h1>
   {{ with .Errors.form }}
   <div style="background-color: red;">
     {{ . }}
@@ -12,8 +16,8 @@
       <div class="">
         <label for="name" class="sr-only">Firstname</label>
         <input id="firstname" name="firstname" type="text" autocomplete="firstname" required
-          class="formInput" placeholder="Firstname" value="{{ .Firstname }}" >
-          {{ with .Errors.firstname }}
+          class="formInput" placeholder="Firstname" value="{{ .Data.Firstname }}" >
+          {{ with .Errors.Firstname }}
           <div style="background-color: red;">
             {{ . }}
           </div>
@@ -21,7 +25,7 @@
       </div>
       <div >
         <label for="email-address" class="sr-only">Email address</label>
-        <input id="email-address" name="email" value="{{ .Email }}" type="email" autocomplete="email" required
+        <input id="email-address" name="email" value="{{ .Data.Email }}" type="email" autocomplete="email" required
           class="formInput" placeholder="Email address">
       </div>
       <div >
@@ -76,5 +80,7 @@
       Send me a magic link
     </button>
   </form>
+</div>
+
 </div>
 {{ end }}
