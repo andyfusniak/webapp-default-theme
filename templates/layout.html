@@ -6,12 +6,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="static/css/tailwind.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.min.css" integrity="sha512-vIgFb4o1CL8iMGoIF7cYiEVFrel13k/BkTGvs0hGfVnlbV6XjAA0M0oEHdWqGdAVRTDID3vIZPOHmKdrMAUChA==" crossorigin="anonymous" />
+  
   <title>{{ template "title" . }}</title>
   {{ if .Site.DevMode -}}
+  <link rel="stylesheet" href="static/css/tailwind.css">
+  <link rel="stylesheet" href="static/css/materialdesignicons.min-5.9.55.css" />
   <script src="static/js/vue.global.prod-3.0.7.js"></script>
   {{- else -}}
+  <link rel="stylesheet" href="static/css/tailwind.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.min.css" integrity="sha512-vIgFb4o1CL8iMGoIF7cYiEVFrel13k/BkTGvs0hGfVnlbV6XjAA0M0oEHdWqGdAVRTDID3vIZPOHmKdrMAUChA==" crossorigin="anonymous" />
   <script src="https://unpkg.com/vue@next"></script>
   {{- end }}
   {{ template "plinks" . }}

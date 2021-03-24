@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "setup": "mkdir -p public/js && cp vendor/*.js public/js",
+    "setup": "mkdir -p public/css public/js public/fonts && cp vendor/*.js public/js && cp vendor/*.css public/css && cp vendor/*.map public/css && cp vendor/fonts/* public/fonts",
     "clean": "rimraf public",
     "tw:build": "npm run setup && tailwindcss build ./css/tailwind.css -o ./public/css/tailwind.css",
     "tw:prod": "npm run setup && NODE_ENV=production postcss build ./css/tailwind.css -o ./public/css/tailwind.css",

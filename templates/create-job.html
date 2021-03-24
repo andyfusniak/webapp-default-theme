@@ -1,8 +1,8 @@
 {{ define "plinks" -}}
 {{ if .Site.DevMode -}}
-<link rel="stylesheet" href="static/js/simplemde.min.css">
+<link rel="stylesheet" href="static/css/simplemde.min-1.11.2.css">
 {{- else -}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
 {{- end -}}
 {{- end -}}
 {{ define "content" }}
