@@ -3,9 +3,8 @@
 <div class="wrapper">
 
 <div class="card">
-  <h2 class="cardTitle">Sign up A1</h2>
-  <h1>Hello, {{if .Site.DevMode }} ITS TRUE {{else}} NOPE {{end}}!</h1>
-  {{ with .Errors.form }}
+  <h2 class="cardTitle">Sign up</h2>
+  {{ with .Errors.Form }}
   <div style="background-color: red;">
     {{ . }}
   </div>
@@ -16,12 +15,12 @@
       <div class="">
         <label for="name" class="sr-only">Firstname</label>
         <input id="firstname" name="firstname" type="text" autocomplete="firstname" required
-          class="formInput" placeholder="Firstname" value="{{ .Data.Firstname }}" >
-          {{ with .Errors.Firstname }}
-          <div style="background-color: red;">
-            {{ . }}
-          </div>
-          {{ end }}
+          class="formInput" placeholder="Firstname" value="{{ .Data.Firstname }}">
+        {{ with .Errors.Firstname }}
+        <div style="background-color: red;">
+          {{ . }}
+        </div>
+        {{ end }}
       </div>
       <div >
         <label for="email-address" class="sr-only">Email address</label>

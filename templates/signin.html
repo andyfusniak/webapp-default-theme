@@ -4,9 +4,12 @@
 <div class="card">
   <div>
     <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
-    <h2 class="cardTitle">
-      Sign in to your account
-    </h2>
+    <h2 class="cardTitle">Sign in to your account<h2>
+    {{ with .Errors.Form }}
+    <div style="background-color: red;">
+      {{ . }}
+    </div>
+    {{ end }}
     <p class="mt-2 text-center text-sm text-gray-600">
       Or
       <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
@@ -20,12 +23,22 @@
       <div class="py-4">
         <label for="email-address" class="sr-only">Email address</label>
         <input id="email-address" name="email" type="email" autocomplete="email" required
-          class="formInput" placeholder="Email address">
+          class="formInput" placeholder="Email address" value="{{ .Data.Email }}">
+        {{ with .Errors.Email }}
+        <div style="background-color: red;">
+          {{ . }}
+        </div>
+        {{ end }}
       </div>
       <div>
         <label for="password" class="sr-only">Password</label>
         <input id="password" name="password" type="password" autocomplete="current-password" required
           class="formInput" placeholder="Password">
+        {{ with .Errors.Password }}
+        <div style="background-color: red;">
+          {{ . }}
+        </div>
+        {{ end }}
       </div>
     </div>
 
